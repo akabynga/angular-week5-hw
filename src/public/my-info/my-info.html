@@ -1,0 +1,30 @@
+<div class="container my-info-container">
+    <div ng-if="!myInfoCtrl.isEmptyObject(myInfoCtrl.account)">
+        <h2 id='legend' class="text-center">My Information</h2>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">Personal Information</div>
+            <div class="panel-body">
+                <dl class="dl-horizontal">
+                    <dt>Name</dt>
+                    <dd>{{myInfoCtrl.account.lastname}} {{myInfoCtrl.account.firstname}}</dd>
+                    <dt>E-mail</dt>
+                    <dd>{{myInfoCtrl.account.email}}</dd>
+                    <dt>Phone</dt>
+                    <dd>{{myInfoCtrl.account.phone}}</dd>
+                </dl>
+            </div>
+        </div>
+        <div class="panel panel-info" ng-if="myInfoCtrl.dish">
+            <div class="panel-heading">Favorite Dish</div>
+            <div class="panel-body">
+                <menu-item menu-item="myInfoCtrl.dish"></menu-item>
+            </div>
+        </div>
+    </div>
+    <div ng-if="myInfoCtrl.isEmptyObject(myInfoCtrl.account)">
+        <div class="text-center ng-scope">
+            <h3>Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!</a></h3>
+        </div>
+    </div>
+</div>
