@@ -1,7 +1,7 @@
 <div class="container registration-container">
     <h2 id='legend' class="text-center">Sign Up</h2>
     <div class="alert alert-success col-md-4 col-md-offset-4" ng-if='signUpCtrl.isSignedUp'>Your information has been
-        saved!
+        saved! <a ui-sref="public.myinfo">My Info</a>
     </div>
     <form name='signupForm' novalidate class="col-md-4 col-md-offset-4">
         <fieldset class="registration-fieldset">
@@ -67,10 +67,12 @@
                 <label class="control-label" for="phone">Favorite Dish</label>
                 <input id='favoritedish' type="text" name="favoritedish"
                        placeholder="Menu Item Code"
+                       required
                        ng-model="signUpCtrl.reg.user.favoritedish"
-                       class="form-control input-lg {{signUpCtrl.reg.extraClass}}">
+                       class="form-control input-lg {{signUpCtrl.reg.extraClass}}"
+                       ng-change="signUpCtrl.dishChanged()">
                 <p class="help-block"
-                   ng-if="signUpCtrl.reg.extraClass === 'ng-invalid'">
+                   ng-if="signupForm.favoritedish.$invalid && signupForm.favoritedish.$touched">
                     No such menu number exists.
                 </p>
             </div>
